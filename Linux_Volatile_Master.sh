@@ -1,7 +1,10 @@
 #!/bin/bash
 #comments here - Local/system binary dependent volatile data collection script. Not to be used in applications which require a strict forensic procedure/statically compile binaries.
+exec 2>/dev/null
 irfname=`uname -n`.`date +%Y%m%d.%H%M%S`.volatile
-echo "##### HOSTNAME #####" >$irfname
+date +"##### THIS SCRIPT STARTED RUNNING ON %Y-%m-%d AT %H:%M:%S %Z #####" >$irfname
+date +"##### THIS SCRIPT STARTED RUNNING ON %Y-%m-%d AT %H:%M:%S %Z #####"
+echo "##### HOSTNAME #####" >>$irfname
 hostname >>$irfname
 echo "##### DATE #####" >>$irfname
 date >>$irfname
