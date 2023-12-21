@@ -59,6 +59,10 @@ echo "##### DMESG #####" >>$irfname
 dmesg >>$irfname
 echo "##### ENV #####" >>$irfname
 env >>$irfname
+echo "##### Dump CRONTAB ALL USERS #####" >>$irfname
+getent passwd | awk -F: '{ print $1 }' | sudo xargs -n1 crontab -l -u >>$irfname
+echo "##### SystemD Timers #####" >>$irfname
+systemctl list-timers -all >>$irfname
 echo "##### LSMOD -V #####" >>$irfname
 lsmod -v >>$irfname
 echo "##### LSPCI -V #####" >>$irfname
